@@ -1,5 +1,8 @@
 # afweb
 
+## Resultado Final
+<img src="./images/Resultado_Final.png" width= 100%>
+
 ## Project setup
 ```
 yarn install
