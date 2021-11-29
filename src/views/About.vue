@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="about">
     <v-system-bar class="content" color="primary"></v-system-bar>
-    <Toolbar title="Home" />
+    <Toolbar title="About" />
 
     <v-col style="padding: 0; margin: 0; height: calc(100% - 125px)">
       <v-row style="padding: 0; margin: 0; height: 100%">
@@ -18,7 +18,7 @@
 </template>
 
 <style lang="scss" scoped>
-.home {
+.about {
   height: 100%;
 }
 
@@ -38,5 +38,5 @@ import Toolbar from "../components/Toolbar.vue";
     Toolbar,
   },
 })
-export default class Home extends Vue {}
+export default class About extends Vue {}
 </script>
