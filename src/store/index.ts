@@ -1,5 +1,7 @@
 import { Classroom } from "@/interfaces/classrooms";
+import { INews } from "@/interfaces/news";
 import { Page } from "@/interfaces/pages";
+import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -11,7 +13,8 @@ export default new Vuex.Store({
       { name: "Home", path: "/home", id: "1" },
       { name: "Profile", path: "/profile", id: "2" },
       { name: "Classrooms", path: "/classrooms", id: "3" },
-      { name: "About", path: "/about", id: "4" },
+      { name: "Newspaper", path: "/newspaper", id: "4" },
+      { name: "About", path: "/about", id: "5" },
     ] as Page[],
     classrooms: [
       {
@@ -71,8 +74,32 @@ export default new Vuex.Store({
         date: new Date(),
       },
     ] as Classroom[],
+    newsList: [] as INews[],
+    loading: true,
   },
-  mutations: {},
-  actions: {},
-  modules: {},
+  mutations: {
+    setNews(state, data: INews[]): void {
+      state.newsList = data;
+    },
+    setLoading(state, status: boolean): void {
+      state.loading = status;
+    },
+  },
+  actions: {
+    async loadNews({ commit }) {
+      commit("setLoading", true);
+
+      const response = await axios.get<{ data: INews[] }>(
+        "https://inshortsapi.vercel.app/news?category=all"
+      );
+
+      commit("setNews", response.data.data);
+      commit("setLoading", false);
+    },
+  },
+  getters: {
+    newsList(state): INews[] {
+      return state.newsList;
+    },
+  },
 });

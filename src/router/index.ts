@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import Classrooms from "../views/Classrooms.vue";
 import About from "../views/About.vue";
+import Newspaper from "../views/Newspaper.vue";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ const routes: RouteConfig[] = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/newspaper",
+    name: "Newspaper",
+    component: Newspaper,
   },
 ];
 
